@@ -22,7 +22,7 @@ import { GroceryListComponent } from './grocery-list/grocery-list.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule  // Make sure this is included
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

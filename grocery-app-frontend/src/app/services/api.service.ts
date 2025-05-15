@@ -1,4 +1,3 @@
-// api.service.ts
 import { Injectable, inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,7 +14,6 @@ export class ApiService {
   private platformId = inject(PLATFORM_ID);
 
   constructor(private http: HttpClient) {
-    // Try to load userId and username from localStorage if in browser
     if (isPlatformBrowser(this.platformId)) {
       const storedUserId = localStorage.getItem('userId');
       if (storedUserId) {
@@ -29,7 +27,6 @@ export class ApiService {
     }
   }
   
-  // Add a getter for username
   getUserName(): string {
     return this.username;
   }
@@ -38,12 +35,11 @@ export class ApiService {
     return this.http.post<any>(`${this.baseUrl}/login`, { username, password })
       .pipe(tap((response: any) => {
         this.userId = response.userId;
-        this.username = username; // Store the username
+        this.username = username;
         
-        // Only access localStorage in browser environment
         if (isPlatformBrowser(this.platformId)) {
           localStorage.setItem('userId', this.userId?.toString() || '');
-          localStorage.setItem('username', username); // Store the username in localStorage
+          localStorage.setItem('username', username);
         }
       }));
   }

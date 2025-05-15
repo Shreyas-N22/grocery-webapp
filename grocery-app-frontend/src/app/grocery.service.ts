@@ -8,11 +8,10 @@ import { AppUser } from './models/app-user.model';
   providedIn: 'root'
 })
 export class GroceryService {
-  private baseUrl = 'http://localhost:8080/'; // Adjust if your backend uses a different port
+  private baseUrl = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) { }
 
-  // Authentication methods
   login(username: string, password: string): Observable<any> {
     const formData = new FormData();
     formData.append('username', username);
@@ -31,7 +30,6 @@ export class GroceryService {
     return this.http.post(`${this.baseUrl}/logout`, {}, { withCredentials: true });
   }
 
-  // Grocery item methods
   getGroceryItems(): Observable<GroceryItem[]> {
     return this.http.get<GroceryItem[]>(`${this.baseUrl}/grocery-items`, { withCredentials: true });
   }

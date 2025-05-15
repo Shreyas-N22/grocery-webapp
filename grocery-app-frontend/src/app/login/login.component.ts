@@ -1,14 +1,13 @@
-// src/app/login/login.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router'; // Add RouterLink here
+import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink], // Add RouterLink to imports
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: `./login.component.html`,
   styleUrls: [`./login.component.css`]
 })
@@ -23,7 +22,6 @@ export class LoginComponent {
   onSubmit(): void {
     this.formSubmitted = true;
     
-    // Check if username or password is empty
     if (!this.username || !this.password) {
       this.errorMessage = 'Please enter both username and password';
       return;

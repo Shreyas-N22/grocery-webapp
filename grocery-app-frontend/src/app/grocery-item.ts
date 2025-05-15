@@ -1,5 +1,5 @@
 export interface GroceryItem {
-    id?: number; // Optional for new items
+    id?: number;
     name: string;
     price: number;
 }
